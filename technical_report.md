@@ -7,12 +7,23 @@ Technical Report
 Server Framework Features
 -------------------------
 
-### (name of Feature 1)
+### **Routing**
 
-(Technical description of the feature - 40ish words - 1 mark)
-(A code block snippet example demonstrating the feature - 1 mark)
-(Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
-(Provide reference urls to your sources of information about the feature - required)
+Routing is the method used to connect the server side to the client side of the application, this is through the use of REST API endpoints. When a request has been received from the client the server then matches the request to its specified route and sends the predefined response back.
+
+```const express = require('express')
+const app = express()
+
+// respond with "Hello world!! This is Express!" when a GET request is made to the homepage
+app.get('/', (req, res) => {
+  res.send('Hello world!! This is Express!')
+}) 
+```
+
+Express.js provides a convenient and minimalistic routing feature that requires little code to implement as opposed to other frameworks such as Django. This is ideal so that the server code remains clean and easy to maintain.
+
+https://expressjs.com/en/guide/routing.html  
+https://kinsta.com/knowledgebase/what-is-express-js/
 
 
 ### (name of Feature 2)
