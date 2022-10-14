@@ -1,13 +1,16 @@
 const express = require('express')
 const app = express()
 const port = 8000
+const cors = require('cors')
 
 app.use(express.json());
+app.use(cors())
 
 ITEM = []
 
 app.get('/', (req, res) => {
-  res.send('<html><body>Your HTML text</body></html>')
+  res.send('Hello World')
+  console.log("Hello")
 })
 
 app.post('/item/', (req, res) => {
@@ -17,8 +20,9 @@ app.post('/item/', (req, res) => {
 })
 
 app.get('/item/', (req, res) => {
+    res.send(ITEM)
     res.json(ITEM)
-    res.status(200).json(req.body)
+    res.status(200).json(ITEM)
     console.log("get")
 })
 
