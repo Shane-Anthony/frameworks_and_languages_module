@@ -9,7 +9,7 @@ Server Framework Features
 
 ### **Routing**
 
-Routing is the method used to connect the server side to the client side of the application, this is through the use of REST API endpoints. When a request has been received from the client the server then matches the request to its specified route and sends the predefined response back.
+Routing is the method used to map the URL Path to either a function or some logic. When a request has been received, the server then matches the request to its specified route and sends the correct response back.
 
 ```const express = require('express')
 const app = express()
@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 }) 
 ```
 
-Express.js provides a convenient and minimalistic routing feature that requires little code to implement as opposed to other frameworks such as Django. This is ideal so that the server code remains clean and easy to maintain.
+Express.js provides a convenient and minimalistic routing feature that requires little code to implement as opposed to other frameworks such as Django. This is ideal so that the server code is easier to maintain because the routing and logic can be kept in one file which is suitable for smaller applications such as this one.
 
 https://expressjs.com/en/guide/routing.html  
 https://kinsta.com/knowledgebase/what-is-express-js/
