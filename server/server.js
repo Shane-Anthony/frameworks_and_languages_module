@@ -10,7 +10,6 @@ ITEM = []
 
 app.get('/', (req, res) => {
   res.send('Hello World')
-  console.log("Hello")
 })
 
 app.post('/item/', (req, res) => {
