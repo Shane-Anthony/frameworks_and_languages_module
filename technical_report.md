@@ -11,7 +11,8 @@ Server Framework Features
 
 Routing is the method used to map the URL Path to either a function or some logic. When a request has been received, the server then matches the request to its specified route and sends the correct response back.
 
-```const express = require('express')
+```
+const express = require('express')
 const app = express()
 
 // respond with "Hello world!! This is Express!" when a GET request is made to the homepage

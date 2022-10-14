@@ -1,3 +1,7 @@
-FROM python:slim
+FROM node:alpine
+WORKDIR /app/
+COPY package.json ./
+RUN npm install
+COPY . .
 
-CMD [ "python3", "-m", "http.server"]
+ENTRYPOINT ["node", "server.js"]

@@ -10,18 +10,23 @@ app.get('/', (req, res) => {
   res.send('<html><body>Your HTML text</body></html>')
 })
 
-app.post('/item', (req, res) => {
+app.post('/item/', (req, res) => {
     ITEM.push(req.body)
     res.status(201).json(req.body)
+    console.log("post",ITEM)
 })
 
-app.get('/item', (req, res) => {
+app.get('/item/', (req, res) => {
     res.json(ITEM)
+    res.status(200).json(req.body)
+    console.log("get")
 })
 
 app.delete('/item/:id', (req,res) => {
-    ITEM = ITEM.filter(o => o.id !==parseFloat(req.params.id))
-    res.status(204).json()
+    const id = parseFloat(req.params.id)
+    ITEM = [...ITEM.filter((item)=>item.id != id)]
+    console.log("delete", ITEM)
+    res.status(204).json({})
 })
 
 app.listen(port, () => {
