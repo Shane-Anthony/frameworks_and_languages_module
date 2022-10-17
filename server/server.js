@@ -1,10 +1,10 @@
 const express = require('express')
 const app = express()
 const port = 8000
-const cors = require('cors')
+//const cors = require('cors')
 
 app.use(express.json());
-app.use(cors())
+//app.use(cors())
 
 ITEM = []
 
@@ -13,23 +13,21 @@ app.get('/', (req, res) => {
 })
 
 app.post('/item/', (req, res) => {
-    ITEM.push(req.body)
-    res.status(201).json(req.body)
-    console.log("post",ITEM)
+  res.status(201).json(req.body)  
+  ITEM.push(req.body)
+  
 })
 
-app.get('/item/', (req, res) => {
-    res.send(ITEM)
-    res.json(ITEM)
+app.get('/items/', (req, res) => {
     res.status(200).json(ITEM)
-    console.log("get")
 })
 
 app.delete('/item/:id', (req,res) => {
     const id = parseFloat(req.params.id)
     ITEM = [...ITEM.filter((item)=>item.id != id)]
-    console.log("delete", ITEM)
     res.status(204).json({})
+
+    console.log("delete", ITEM)
 })
 
 app.listen(port, () => {
