@@ -1,1 +1,142 @@
-<body> Hello World</body>
+<html>
+
+<head>
+
+   <meta charset="utf-8" />
+   <link id="favicon" rel="shortcut icon" type="image/png" href="data:image/png;base64,....==" />
+   <title>Items</title>
+   <style>
+   </style>
+   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+
+<body>
+
+   <h1>Freecycle</h1>
+   <div id="app">
+        {{ message }}
+     <form @submit.prevent="addItem">
+        <input v-model="item.item" name="item" type="text" placeholder="Input Item">
+        <input v-model="item.location" name="location" type="text" placeholder="Input Username">
+        <button>Submit</button>
+     </form>
+
+     <ul>
+
+       <li v-for="item in items">
+
+         <span>{{item.userid}}</span>
+         <span>{{item.description}}</span>
+         <span>{{item.image}}</span>
+         <span>{{item.lat}}</span>
+         <span>{{item.lon}}</span>
+         <span>{{item.keywords}}</span>
+
+       </li>
+
+     </ul>
+
+   </div>
+
+<script type="module">
+
+const { createApp } = Vue
+
+let urlAPI = '' 
+
+createApp({
+    data() {
+        return {
+            item: {
+                id:'',
+                user: '',
+                description:'',
+                image:'',
+                lat: '',
+                lon: '',
+                keywords:'',
+            },
+
+
+            items: [
+
+                {"id":0.6245638,"user":"Test1","description":"Test1", "image":"Test1", "lat":"Test1", "lon": "TEST1", "keywords":"Test1" },
+                {"id":0.36347428,"user":"Test2","description":"Test2", "image":"Test2", "lat":"Test2", "lon": "TEST2", "keywords":"Test2" },
+
+            ],
+
+            message: 'Hello Vue!',
+
+        }
+
+    },
+
+    created() {
+
+
+        this.clearItem()
+        this.getItems()
+
+    },
+
+    methods: {
+
+    clearItem() {
+
+        this.item = {...this.item, ...{
+            
+            id: Math.random(),
+            user:'',
+            description: '',
+            image: '',
+            lat: '',
+            lon: '',
+            keywords: '',
+
+        }}
+
+    },
+
+   addItem() {
+
+        fetch(`${urlAPI}/item/`, {
+
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(this.item),
+
+        })
+
+        .then(response => response.json())
+        .then(json => console.log('addItem()', json))
+        .then(this.clearItem)
+        .then(this.getItems)
+        .catch(err => console.error(err));
+
+    },
+
+   getItems() {
+
+        fetch(`${urlAPI}/items`, {
+
+            method: 'GET',
+        })
+
+        .then(response => response.json())
+        .then(data => this.items = data)
+        .catch(err => console.error(err))
+
+    }
+
+ }
+
+}).mount('#app')
+
+
+
+</script>
+
+</body>
+
+</html>
