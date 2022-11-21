@@ -110,9 +110,17 @@ Client Language Features
 Critique of Server/Client prototype
 ---------------------
 
-### (name of Issue 1)
+### Rendering
 
-(A code snippet example demonstrating the feature - 1 mark)
+```javascript
+function render_items(params) {
+		fetch(`${urlAPI}/items?${new URLSearchParams(params).toString()}`)
+			.then(response => response.json())
+			.then(renderItems)
+		.catch(err => console.error(err));
+	}
+```
+
 (Explain why this pattern is problematic - 40ish words 1 mark)
 
 ### (name of Issue 2)
