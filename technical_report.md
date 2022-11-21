@@ -110,7 +110,7 @@ Client Language Features
 Critique of Server/Client prototype
 ---------------------
 
-### Rendering
+### Rendering - Client
 
 ```javascript
 function render_items(params) {
@@ -123,9 +123,17 @@ function render_items(params) {
 
 (Explain why this pattern is problematic - 40ish words 1 mark)
 
-### (name of Issue 2)
+### CORS 
 
-(A code snippet example demonstrating the feature - 1 mark)
+```
+RESPONSE_DEFAULTS = {
+    'code': 200, 
+    'body': '',
+    'Content-type': 'text/html; charset=utf-8',
+    'Server': 'CustomHTTP/0.0 Python/3.9.0+',
+    'Access-Control-Allow-Origin': '*',
+}
+```
 (Explain why this pattern is problematic - 40ish words 1 mark)
 
 
