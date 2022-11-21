@@ -125,7 +125,7 @@ function render_items(params) {
 
 ### CORS 
 
-```
+```python
 RESPONSE_DEFAULTS = {
     'code': 200, 
     'body': '',
