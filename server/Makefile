@@ -1,6 +1,3 @@
-.PHONY: help
-.DEFAULT_GOAL:=help
-
 DOCKER_IMAGE:=server
 
 run_local: node_modules

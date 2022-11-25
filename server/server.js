@@ -36,55 +36,73 @@ let ITEM = {
 // GET
 
 app.get('/', (req, res) => {
-  res.send('Hello World')
+  res.status(200).send('<html><body>Hello World</body></html>')
+
 })
 
 app.get('/items/', (req, res) => {
-  
+  if( req.query.user_id)
+  {
+    res.status(200).json(Object.values(ITEM).filter(o  => o.user_id == req.query.user_id))
+    res.send(ITEM)
+    return;
+  }
+  res.status(200).json(Object.values(ITEM))
 })
 
-app.get('/item/:id', (req, res) => {
-  
+app.get('/item/:id', (req,res) => {
+  if(ITEM[req.params.id] === undefined)
+  {
+    res.status(404).json("Item does not exist")
+  }
+  else
+  {
+    res.status(200).json(ITEM[req.params.id])
+  }
 })
 
 // POST
 
-app.post('/item/', (req, res) => {
-  if (!req.body.user_id||!req.body.keywords||!req.body.description||!req.body.lat||!req.body.lon) {
-    res.status(405).json({
-      "message": "All fields are required"
-    })
-  }
-  else { 
-    ITEM[newId] = {
-      id: newId,
-      user_id: req.body.user_id,
-      keywords: req.body.keywords,
-      description: req.body.description,
-      lat: req.body.lat,
-      lon: req.body.lon,
-      date_from: new Date().toISOString().slice(0,10),
-      date_to: new Date().toISOString().slice(0,10)
-    }
+app.post('/item', (req, res) => {
 
-    let itemId = req.body.id
-    let newId = itemId.length > 0 ? Math.max.apply(Math, itemID) + 1 : 1;
+  req.body.id=newId;
+  var newId=  Math.max( ...Object.keys(ITEM)) +1;
 
-    ITEM.push(newId)
-    res.status(201).json(newID)  
+  ITEM[newId] = {
+    id: newId,
+    user_id: req.body.user_id,
+    keywords: req.body.keywords,
+    description: req.body.description,
+    image: req.body.image,
+    lat: req.body.lat,
+    lon: req.body.lon,
+    date_from: new Date().toISOString().slice(0,10),
+    date_to: new Date().toISOString().slice(0,10)
   }
-  
+
+  if (!req.user_id && !req.body.keywords && !req.body.description && !req.body.lat && !req.body.lon )
+  {
+    return res.status(405).send("Some fields may be empty.")
+  }
+  else {
+    res.status(201).json(ITEM[newId])
+  }
+
 })
 
 // DELETE
 
 app.delete('/item/:id', (req,res) => {
-    
-  const id = parseFloat(req.params.id)
-  ITEM = [...ITEM.filter((item)=>item.id != id)]
-  res.status(204).json({})
-
-  console.log("delete", ITEM)
+  if (Object.keys(ITEM).includes(req.params.id))
+  {
+    delete(ITEM(req.params.id));
+    res.status(204).send("This item no longer exists.");
+  } 
+  else 
+  {
+    res.status(404).send("Item not found.");
+  }
+  
 })
 
 app.listen(port, () => {
