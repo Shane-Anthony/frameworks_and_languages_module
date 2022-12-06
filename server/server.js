@@ -95,7 +95,7 @@ app.post('/item', (req, res) => {
 app.delete('/item/:id', (req,res) => {
   if (Object.keys(ITEM).includes(req.params.id))
   {
-    delete(ITEM(req.params.id));
+    delete(ITEM[req.params.id]);
     res.status(204).send("This item no longer exists.");
   } 
   else 
