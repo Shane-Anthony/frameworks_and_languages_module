@@ -51,13 +51,13 @@ app.get('/items/', (req, res) => {
 })
 
 app.get('/item/:id', (req,res) => {
-  if(ITEM[req.params.id] === undefined)
+  if(Object.keys(ITEM).includes(req.params.id))
   {
-    res.status(404).json("Item does not exist")
+    res.status(200).json(ITEM[req.params.id])
   }
   else
   {
-    res.status(200).json(ITEM[req.params.id])
+    res.status(404).send("Item does not exist")
   }
 })
 
