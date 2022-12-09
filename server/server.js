@@ -63,7 +63,7 @@ app.get('/item/:id', (req,res) => {
 
 // POST
 
-app.post('/item', (req, res) => {
+app.post('/item', (req, res) => { // https://www.tutorialspoint.com/expressjs/expressjs_restful_apis.htm
 
   req.body.id=newId;
   var newId=  Math.max( ...Object.keys(ITEM)) +1;
