@@ -48,15 +48,25 @@
 
         color: #FFFFFF;
     }
-    .leftbar {
+    .left-bar {
         position: absolute;
         padding: 5%;
         top: 30vh;
         width: 50vw;
         left:0em;
         right: 50vw;
+
     }
-    .rightbar {
+    .text{
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1em;
+        line-height: 48px;
+
+        color: #FFFFFF;
+    }
+    .right-bar {
         position: absolute;
         padding: 5%;
         top: 30vh;
@@ -80,29 +90,35 @@
     </div>
         
         <div id="app">
-            <div class="leftbar">
-                {{ message }}
-                <form @submit.prevent="addItem">
-                    <input v-model="item.item" name="item" type="text" placeholder="Input Item">
-                    <input v-model="item.location" name="location" type="text" placeholder="Input Username">
-                    <button>Submit</button>
-                </form>
+            <div class="left-bar">
+                <div class="text">
+                    {{ message }}
+                    <form @submit.prevent="addItem">
+                        <input v-model="item.item" name="item" type="text" placeholder="Input Item">
+                        <input v-model="item.location" name="location" type="text" placeholder="Input Username">
+                        <button>Submit</button>
+                    </form>
+                </div>
+                
             </div>
             
-            <div class="rightbar">
-                <ul>
-                    <li v-for="item in items">
+            <div class="right-bar">
+                <div class="text">
+                    <ul>
+                        <li v-for="item in items">
 
-                        <span>{{item.userid}}</span>
-                        <span>{{item.description}}</span>
-                        <span>{{item.image}}</span>
-                        <span>{{item.lat}}</span>
-                        <span>{{item.lon}}</span>
-                        <span>{{item.keywords}}</span>
+                            <span>{{item.userid}}</span>
+                            <span>{{item.description}}</span>
+                            <span>{{item.image}}</span>
+                            <span>{{item.lat}}</span>
+                            <span>{{item.lon}}</span>
+                            <span>{{item.keywords}}</span>
 
-                    </li>
+                        </li>
 
-                </ul>
+                    </ul>
+                </div>
+                
             </div>
             
         </div>
