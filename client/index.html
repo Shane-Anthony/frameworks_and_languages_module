@@ -4,40 +4,110 @@
 
    <meta charset="utf-8" />
    <link id="favicon" rel="shortcut icon" type="image/png" href="data:image/png;base64,....==" />
-   <title>Items</title>
-   <style>
-   </style>
-   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+   <title>FreeCycle</title>
 
+   <style>
+    body {
+        background-color: B0B0AF;
+    }
+    .panel {
+        position: absolute;
+        width: 50vw;
+        height: 1024px;
+        left: 0px;
+        top: 0px;
+        padding: auto;
+        
+        background: #434444;   
+    }
+    .titlebar {
+        margin:auto;
+        position: absolute;
+        width: 40vw;
+        height: 90px;
+        left: 10%;
+        right: 49vw;
+        top: 20px;
+        text-align: center;
+
+        background: #B64C2A;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 55px;
+    }
+    .title{
+        margin:auto;
+        position: absolute;
+        left: 25%;
+        right: 25%;
+
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1em;
+        line-height: 48px;
+
+        color: #FFFFFF;
+    }
+    .leftbar {
+        position: absolute;
+        padding: 5%;
+        top: 30vh;
+        width: 50vw;
+        left:0em;
+        right: 50vw;
+    }
+    .rightbar {
+        position: absolute;
+        padding: 5%;
+        top: 30vh;
+        width: 50vw;
+        left: 50vw;
+        right:100vw;
+    }
+    </style>
+
+   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 
 <body>
 
-   <h1>Freecycle</h1>
-   <div id="app">
-        {{ message }}
-     <form @submit.prevent="addItem">
-        <input v-model="item.item" name="item" type="text" placeholder="Input Item">
-        <input v-model="item.location" name="location" type="text" placeholder="Input Username">
-        <button>Submit</button>
-     </form>
+   
+   <div class="panel">
+    <div class="titlebar">
+        <div class="title">
+            <h1>FreeCycle</h1>
+        </div>
+    </div>
+        
+        <div id="app">
+            <div class="leftbar">
+                {{ message }}
+                <form @submit.prevent="addItem">
+                    <input v-model="item.item" name="item" type="text" placeholder="Input Item">
+                    <input v-model="item.location" name="location" type="text" placeholder="Input Username">
+                    <button>Submit</button>
+                </form>
+            </div>
+            
+            <div class="rightbar">
+                <ul>
+                    <li v-for="item in items">
 
-     <ul>
+                        <span>{{item.userid}}</span>
+                        <span>{{item.description}}</span>
+                        <span>{{item.image}}</span>
+                        <span>{{item.lat}}</span>
+                        <span>{{item.lon}}</span>
+                        <span>{{item.keywords}}</span>
 
-       <li v-for="item in items">
+                    </li>
 
-         <span>{{item.userid}}</span>
-         <span>{{item.description}}</span>
-         <span>{{item.image}}</span>
-         <span>{{item.lat}}</span>
-         <span>{{item.lon}}</span>
-         <span>{{item.keywords}}</span>
-
-       </li>
-
-     </ul>
-
-   </div>
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+   
 
 <script type="module">
 
