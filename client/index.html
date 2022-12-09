@@ -92,44 +92,44 @@
         </div>
     </div>
         
-        <div id="app">
+        <div id="app" class="container">
             <div class="left-bar">
                 <div class="text">
                     {{ message }}
-                    <form @submit.prevent="addItem">
-                        <div class="row">
+                    <form @submit.prevent="addItem" class="row g-3">
+                        <div class="col">
                             <div class="col-md-4">
                                 <label for="UserID" class="input-labels">User ID: </label>
                                 <input v-model="item.user_id" id= "UserID" name="user_id" type="text" placeholder="Enter User ID">
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="col">
                             <div class="col-md-4">
                                 <label for="Description" class="input-labels">Description: </label>
                                 <input v-model="item.description" id="Description" name="description" type="text" placeholder="Enter Description">
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="col">
                             <div class="col-md-4">
                                 <label for="Image" class="input-labels">Image: </label>
                                 <input v-model="item.image" id="Image" name="image" type="text" placeholder="Enter Image URL">
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="col">
                             <div class="col-md-4">
                                 <label for="Lat" class="input-labels">Latitude: </label>
                                 <input v-model="item.lat" id="Lat" name="lat" type="text" placeholder="Enter Latitude">
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="col">
                             <div class="col-md-4">
                                 <label for="Lon" class="input-labels">Longitude: </label>
                                 <input v-model="item.lon" id="Lon" name="lon" type="text" placeholder="Enter Longitude">
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="col">
                             <div class="col-md-4">
-                                <label for="Keywords" class="input-labels">Enter Keywords: </label>
+                                <label for="Keywords" class="input-labels">Keywords: </label>
                                 <input v-model="item.keywords" id="Keywords" name="keywords" type="text" placeholder="Enter Keywords">
                             </div>
                         </div>
