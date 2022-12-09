@@ -16,9 +16,10 @@
     .panel {
         position: absolute;
         width: 50vw;
-        height: 1024px;
+        height: 100%;
         left: 0px;
         top: 0px;
+        bottom: 0px;
         padding: auto;
         
         background: #434444;   
@@ -77,6 +78,13 @@
         left: 50vw;
         right:100vw;
     }
+    .btn_color{
+        background-color:#B64C2A;color: #FFF;
+        display: block;
+    }
+    .btn_color:hover{
+        background-color:#7e361e;color: #FFF;
+    }
     </style>
 
    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -134,8 +142,10 @@
                             </div>
                         </div>
 
+                        <div class="col-12">
+                            <button type="submit" class="btn btn_color" >Submit</button>
+                        </div>
                         
-                        <button>Submit</button>
                     </form>
                 </div>
                 
@@ -191,7 +201,7 @@ createApp({
 
             ],
 
-            message: 'Hello Vue!',
+            message: 'Please Enter Details: ',
 
         }
 
