@@ -248,8 +248,8 @@ createApp({
 
         .then(response => response.json())
         .then(json => console.log('create_item()', json))
-        .then(this.clearItem)
-        .then(this.getItems)
+        .then(this.clear_item)
+        .then(this.get_items)
         .catch(err => console.error(err));
 
     },
