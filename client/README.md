@@ -25,6 +25,11 @@ To test the Client, we need to run the cypress test with the example server. To 
 ```
 make test_your_client_with_example_server
 ```
-Once this has been run, reports & screenshots shall be available to view in the 'Test_Client' directory.
+
+Alternatively testing the client can be done with -
+```
+make test_client
+```
+Once these have been run, reports & screenshots shall be available to view in the 'Test_Client' directory.
 
 
