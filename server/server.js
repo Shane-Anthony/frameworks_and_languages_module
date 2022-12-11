@@ -3,7 +3,7 @@ const express = require('express')
 const app = express()
 const port = 8000
 const cors = require('cors')
-const path = require('path')
+
 
 app.use(express.json());
 app.use(cors())
@@ -56,8 +56,8 @@ app.post('/item', (req, res) => { // https://www.tutorialspoint.com/expressjs/ex
     image: req.body.image,
     lat: req.body.lat,
     lon: req.body.lon,
-    date_from: new Date().toISOString().slice(0,10),
-    date_to: new Date().toISOString().slice(0,10)
+    date_from: new Date().toJSON().slice(0,10),
+    date_to: new Date().toJSON().slice(0,10)
   }
 
   if (!req.user_id && !req.body.keywords && !req.body.description && !req.body.lat && !req.body.lon )

@@ -106,7 +106,7 @@
             <div class="left-bar">
                 <div class="text">
                     <p>Please Enter Details:  </p>
-                    <form @submit.prevent="create_item" class="row g-3"><!-- https://getbootstrap.com/docs/5.0/forms/layout/ --> 
+                    <form @submit.prevent="create_item" data-field="user_id" class="row g-3"><!-- https://getbootstrap.com/docs/5.0/forms/layout/ --> 
                         <div class="col">
                             <div class="col-md-4">
                                 <label for="UserID" class="input-labels">User ID: </label>
@@ -122,7 +122,7 @@
                         <div class="col">
                             <div class="col-md-4">
                                 <label for="Image" class="input-labels">Image: </label>
-                                <input v-model="item.image" id="Image" name="image" type="text" placeholder="Enter Image URL">
+                                <input v-model="item.image" id="Image" name="image" type="url" placeholder="Enter Image URL">
                             </div>
                         </div>
                         <div class="col">
@@ -155,19 +155,20 @@
             
             <div class="right-bar">
                 <div class="text">
+                    <p>Test</p>
                     <ul list-style-type="none">
                         <li v-for="item in items">
                             <div class="col">
-                                <div class="card" style="width:18rem;"> <!---https://getbootstrap.com/docs/4.0/components/card/-->
-                                    <img class="card-img-top" src="item.image" alt="card image cap"/>
+                                <div class="card" > <!---https://getbootstrap.com/docs/4.0/components/card/-->
+                                    <img :src="item.image" class="card-img-top" alt="card image cap"/>
                                     <p class="card-text">Image URL: {{item.image}}</p>
                                     <div class="card-body">
-                                        <h5 class="card-title">{{item.user_id}}</h5>
-                                        <h6 class="card-subtitle mb-2 text-muted">{{item.description}}</h6>
-                                        <p data-field="id">{{item.id}}</p>
-                                        <p class="card-text">{{item.lat}}</p>
-                                        <p class="card-text">{{item.lon}}</p>
-                                        <p class="card-text">{{item.keywords}}</p>
+                                        <h5 class="card-title">User ID:{{item.user_id}}</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Description: {{item.description}}</h6>
+                                        <p data-field="id">ID: {{item.id}}</p>
+                                        <p class="card-text">Latitude: {{item.lat}}</p>
+                                        <p class="card-text">Longitude: {{item.lon}}</p>
+                                        <p class="card-text">Keywords: {{item.keywords}}</p>
                                         <button @click="delete_item(item.id)" data-action="delete" class="btn_color">Delete</button>
                                     </div>
                                 </div>
@@ -187,21 +188,22 @@ const { createApp } = Vue
 
 const DEFAULT_API = '/api/v1';
 const urlParams = new URLSearchParams(window.location.search);
-const urlAPI = (urlParams.get('api') || DEFAULT_API).replace(/\/$/, '');
+const urlAPI = (urlParams.get('api') || '/api/v1').replace(/\/$/, '');
+let API='' //https://8000-shaneanthon-frameworksa-uvvm0550rks.ws-eu78.gitpod.io/'
 
 createApp({
     data() {
         return {
             item: {
-                id:'',
+                id: '',
                 user_id: '',
-                description:'',
-                image:'',
+                keywords: '',
+                description: '',
+                image: '',
                 lat: '',
                 lon: '',
-                keywords:'',
                 date_from: '',
-                date_to: '',
+                date_to:'',
             },
 
 
@@ -225,12 +227,12 @@ createApp({
 
         this.item = {...this.item, ...{
             
-            user_id:'',
+            user_id: '',
+            keywords: '',
             description: '',
             image: '',
             lat: '',
             lon: '',
-            keywords: '',
 
         }}
 
@@ -238,7 +240,7 @@ createApp({
 
    create_item() {
 
-        fetch(`${urlAPI}/item/`, {
+        fetch(`${urlAPI}/item`, {
 
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -271,7 +273,7 @@ createApp({
         fetch(`${urlAPI}/item/${id}`,{
         method: 'DELETE',
       })
-      .then (json => console.log('delete_item()', json))
+      //.then (json => console.log('delete_item()', json))
       .then (this.get_items)
         .catch(err=>console.error(err));
     }
