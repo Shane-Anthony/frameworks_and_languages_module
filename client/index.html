@@ -1,290 +1,277 @@
 <html>
 
-<head>
+    <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
-    <title>FreeCycle</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+        <title>FreeCycle</title>
 
-    <style>
-    body {
-        background-color: B0B0AF;
-    }
-    .panel {
-        position: absolute;
-        width: 50vw;
-        height: 100rem;
-        left: 0px;
-        top: 0px;
-        bottom: 0px;
-        padding: auto;
-        
-        background: #434444;   
-    }
-    .titlebar {
-        margin:auto;
-        position: absolute;
-        width: 40vw;
-        height: 90px;
-        left: 10%;
-        right: 49vw;
-        top: 20px;
-        text-align: center;
-
-        background: #B64C2A;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        border-radius: 55px;
-    }
-    .title{
-        margin:auto;
-        position: absolute;
-        left: 25%;
-        right: 25%;
-
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 1em;
-        line-height: 48px;
-
-        color: #FFFFFF;
-    }
-    .left-bar {
-        display: block;
-        position: absolute;
-        padding: 5%;
-        top: 20vh;
-        width: 50vw;
-        left:0em;
-        right: 50vw;
-
-    }
-    .text{
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 1em;
-        line-height: 48px;
-
-        color: #FFFFFF;
-    }
-    .right-bar {
-        display: block;
-        position: absolute;
-        padding: 5%;
-        top: 20vh;
-        width: 50vw;
-        left: 50vw;
-        right:100vw;
-    }
-    .btn_color{
-        background-color:#B64C2A;color: #FFF;
-        display: block;
-    }
-    .btn_color:hover{
-        background-color:#7e361e;color: #FFF;
-    }
-    </style>
-
-   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-</head>
-
-<body>
-
-   
-   <div class="panel">
-    <div class="titlebar">
-        <div class="title">
-            <h1>FreeCycle</h1>
-        </div>
-    </div>
-        
-        <div id="app" class="container">
-            <div class="left-bar">
-                <div class="text">
-                    <p>Please Enter Details:  </p>
-                    <form @submit.prevent="create_item" data-field="user_id" class="row g-3"><!-- https://getbootstrap.com/docs/5.0/forms/layout/ --> 
-                        <div class="col">
-                            <div class="col-md-4">
-                                <label for="UserID" class="input-labels">User ID: </label>
-                                <input v-model="item.user_id" id= "UserID" name="user_id" type="text" placeholder="Enter User ID">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="col-md-4">
-                                <label for="Description" class="input-labels">Description: </label>
-                                <input v-model="item.description" id="Description" name="description" type="text" placeholder="Enter Description">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="col-md-4">
-                                <label for="Image" class="input-labels">Image: </label>
-                                <input v-model="item.image" id="Image" name="image" type="url" placeholder="Enter Image URL">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="col-md-4">
-                                <label for="Lat" class="input-labels">Latitude: </label>
-                                <input v-model="item.lat" id="Lat" name="lat" type="text" placeholder="Enter Latitude">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="col-md-4">
-                                <label for="Lon" class="input-labels">Longitude: </label>
-                                <input v-model="item.lon" id="Lon" name="lon" type="text" placeholder="Enter Longitude">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="col-md-4">
-                                <label for="Keywords" class="input-labels">Keywords: </label>
-                                <input v-model="item.keywords" id="Keywords" name="keywords" type="text" placeholder="Enter Keywords">
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <button data-action="create_item" type="submit" class="btn btn_color" >Submit</button>
-                        </div>
-                        
-                    </form>
-                </div>
-                
-            </div>
+        <style>
+        body {
+            background-color: B0B0AF;
+        }
+        .panel {
+            position: absolute;
+            width: 50vw;
+            height: 100rem;
+            left: 0px;
+            top: 0px;
+            bottom: 0px;
+            padding: auto;
             
-            <div class="right-bar">
-                <div class="text">
-                    <p>Test</p>
-                    <ul list-style-type="none">
-                        <li v-for="item in items">
-                            <div class="col">
-                                <div class="card" > <!---https://getbootstrap.com/docs/4.0/components/card/-->
-                                    <img :src="item.image" class="card-img-top" alt="card image cap"/>
-                                    <p class="card-text">Image URL: {{item.image}}</p>
-                                    <div class="card-body">
-                                        <h5 class="card-title">User ID:{{item.user_id}}</h5>
-                                        <h6 class="card-subtitle mb-2 text-muted">Description: {{item.description}}</h6>
-                                        <p data-field="id">ID: {{item.id}}</p>
-                                        <p class="card-text">Latitude: {{item.lat}}</p>
-                                        <p class="card-text">Longitude: {{item.lon}}</p>
-                                        <p class="card-text">Keywords: {{item.keywords}}</p>
-                                        <button @click="delete_item(item.id)" data-action="delete" class="btn_color">Delete</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-   
+            background: #434444;   
+        }
+        .titlebar {
+            margin:auto;
+            position: absolute;
+            width: 40vw;
+            height: 90px;
+            left: 10%;
+            right: 49vw;
+            top: 20px;
+            text-align: center;
 
-<script type="module">
+            background: #B64C2A;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 55px;
+        }
+        .title{
+            margin:auto;
+            position: absolute;
+            left: 25%;
+            right: 25%;
 
-const { createApp } = Vue
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 1em;
+            line-height: 48px;
 
-
-const DEFAULT_API = '/api/v1';
-const urlParams = new URLSearchParams(window.location.search);
-const urlAPI = (urlParams.get('api') || '/api/v1').replace(/\/$/, '');
-let API='' //https://8000-shaneanthon-frameworksa-uvvm0550rks.ws-eu78.gitpod.io/'
-
-createApp({
-    data() {
-        return {
-            item: {
-                id: '',
-                user_id: '',
-                keywords: '',
-                description: '',
-                image: '',
-                lat: '',
-                lon: '',
-                date_from: '',
-                date_to:'',
-            },
-
-
-            items: [],
+            color: #FFFFFF;
+        }
+        .left-bar {
+            display: block;
+            position: absolute;
+            padding: 5%;
+            top: 20vh;
+            width: 50vw;
+            left:0em;
+            right: 50vw;
 
         }
+        .text{
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 1em;
+            line-height: 48px;
 
-    },
+            color: #FFFFFF;
+        }
+        .right-bar {
+            display: block;
+            position: absolute;
+            padding: 5%;
+            top: 20vh;
+            width: 50vw;
+            left: 50vw;
+            right:100vw;
+        }
+        .btn_color{
+            background-color:#B64C2A;color: #FFF;
+            display: block;
+        }
+        .btn_color:hover{
+            background-color:#7e361e;color: #FFF;
+        }
+        </style>
 
-    created() {
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    </head>
+
+    <body>
+
+    
+    <div class="panel">
+        <div class="titlebar">
+            <div class="title">
+                <h1>FreeCycle</h1>
+            </div>
+        </div>
+            <div id="app" class="container">
+                <div class="left-bar">
+                    <div class="text">
+                        <p>Please Enter Details:  </p>
+                        <form @submit.prevent="create_item" data-field="user_id" class="row g-3"><!-- https://getbootstrap.com/docs/5.0/forms/layout/ --> 
+                            <div class="col">
+                                <div class="col-md-4">
+                                    <label for="UserID" class="input-labels">User ID: </label>
+                                    <input v-model="item.user_id" id= "UserID" name="user_id" type="text" placeholder="Enter User ID">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="col-md-4">
+                                    <label for="Description" class="input-labels">Description: </label>
+                                    <input v-model="item.description" id="Description" name="description" type="text" placeholder="Enter Description">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="col-md-4">
+                                    <label for="Image" class="input-labels">Image: </label>
+                                    <input v-model="item.image" id="Image" name="image" type="url" placeholder="Enter Image URL">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="col-md-4">
+                                    <label for="Lat" class="input-labels">Latitude: </label>
+                                    <input v-model="item.lat" id="Lat" name="lat" type="text" placeholder="Enter Latitude">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="col-md-4">
+                                    <label for="Lon" class="input-labels">Longitude: </label>
+                                    <input v-model="item.lon" id="Lon" name="lon" type="text" placeholder="Enter Longitude">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="col-md-4">
+                                    <label for="Keywords" class="input-labels">Keywords: </label>
+                                    <input v-model="item.keywords" id="Keywords" name="keywords" type="text" placeholder="Enter Keywords">
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <button data-action="create_item" type="submit" class="btn btn_color" >Submit</button>
+                            </div>
+                            
+                        </form>
+                    </div>
+                    
+                </div>
+                
+                <div class="right-bar">
+                    <div class="text">
+                        <p>Test</p>
+                        <ul list-style-type="none">
+                            <li v-for="item in items">
+                                <div class="col">
+                                    <div class="card" > <!---https://getbootstrap.com/docs/4.0/components/card/-->
+                                        <img :src="item.image" class="card-img-top" alt="card image cap"/>
+                                        <p class="card-text">Image URL: {{item.image}}</p>
+                                        <div class="card-body">
+                                            <h5 class="card-title">User ID:{{item.user_id}}</h5>
+                                            <h6 class="card-subtitle mb-2 text-muted">Description: {{item.description}}</h6>
+                                            <p data-field="id">ID: {{item.id}}</p>
+                                            <p class="card-text">Latitude: {{item.lat}}</p>
+                                            <p class="card-text">Longitude: {{item.lon}}</p>
+                                            <p class="card-text">Keywords: {{item.keywords}}</p>
+                                            <button @click="delete_item(item.id)" data-action="delete" class="btn_color">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+
+        <script type="module">
+
+            const { createApp } = Vue
 
 
-        this.clear_item()
-        this.get_items()
+            const DEFAULT_API = '/api/v1';
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlAPI = (urlParams.get('api') || '/api/v1').replace(/\/$/, '');
+            //const url = "http://localhost:8000" //https://8000-shaneanthon-frameworksa-uvvm0550rks.ws-eu78.gitpod.io/'
 
-    },
-
-    methods: {
-
-    clear_item() {
-
-        this.item = {...this.item, ...{
-            
-            user_id: '',
-            keywords: '',
-            description: '',
-            image: '',
-            lat: '',
-            lon: '',
-
-        }}
-
-    },
-
-   create_item() {
-
-        fetch(`${urlAPI}/item`, {
-
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(this.item),
-
-        })
-
-        .then(response => response.json())
-        .then(json => console.log('create_item()', json))
-        .then(this.clear_item)
-        .then(this.get_items)
-        .catch(err => console.error(err));
-
-    },
-
-   get_items() {
-
-        fetch(`${urlAPI}/items`, {
-
-            method: 'GET',
-        })
-
-        .then(response => response.json())
-        .then(data => this.items = data)
-        .catch(err => console.error(err))
-
-    },
-
-    delete_item(id){
-        fetch(`${urlAPI}/item/${id}`,{
-        method: 'DELETE',
-      })
-      //.then (json => console.log('delete_item()', json))
-      .then (this.get_items)
-        .catch(err=>console.error(err));
-    }
-    },
-
- }).mount('#app')
+            createApp({
+                data() {
+                    return {
+                        item: {
+                            id: '',
+                            user_id: '',
+                            keywords: '',
+                            description: '',
+                            image: '',
+                            lat: '',
+                            lon: '',
+                            date_from: '',
+                            date_to:'',
+                        },
 
 
+                        items: [],
 
-</script>
+                    }
 
-</body>
+                },
+
+                created() {
+                    this.clear_item()
+                    this.get_items()
+                },
+
+                methods: {
+
+                clear_item() {
+                    this.item = {...this.item, ...{
+                        
+                        user_id: '',
+                        keywords: '',
+                        description: '',
+                        image: '',
+                        lat: '',
+                        lon: '',
+                    }}
+                },
+
+                create_item() {
+                    fetch(`${urlAPI}/item`, {
+
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify(this.item),
+                    })
+                    .then(response => response.json())
+                    .then(json => console.log('create_item()', json))
+                    .then(this.clear_item)
+                    .then(this.get_items)
+                    .catch(err => console.error(err));
+
+                },
+
+                get_items() {
+                    fetch(`${urlAPI}/items`, {
+                        method: 'GET',
+                    })
+                    .then(response => response.json())
+                    .then(data => this.items = data)
+                    .catch(err => console.error(err))
+
+                },
+
+                delete_item(id){
+                    fetch(`${urlAPI}/item/${id}`,{
+                        method: 'DELETE',
+                    })
+
+                    //.then (json => console.log('delete_item()', json))
+                    .then (this.get_items)
+                    .catch(err=>console.error(err));
+                }},
+
+            }).mount('#app')
+
+
+
+        </script>
+
+    </body>
 
 </html>
