@@ -45,11 +45,23 @@ make test_server
 make test_example_client_with_your_server
  ```
 
- To View the working app
+To View the working app
 =====
 
 When the Client and Server are both running use this link to view the finished product:
 
 https://8001-shaneanthon-frameworksa-36wyeq7vfvz.ws-eu78.gitpod.io/?api=https://8000-shaneanthon-frameworksa-36wyeq7vfvz.ws-eu78.gitpod.io
+
+<br>
+
+References
+====
+
+https://expressjs.com/en/guide/routing.html  
+https://dev.to/suhailkakar/building-a-restful-crud-api-with-node-js-express-and-mongodb-1541  
+https://www.tutorialspoint.com/expressjs/expressjs_restful_apis.htm  
+https://stackabuse.com/building-a-rest-api-with-node-and-express/
+https://github.com/nodejs/node/issues/4182  
+
 
  

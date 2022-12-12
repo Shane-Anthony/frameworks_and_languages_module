@@ -41,5 +41,13 @@ When the Client and Server are both running use this link to view the finished p
 
 https://8001-shaneanthon-frameworksa-36wyeq7vfvz.ws-eu78.gitpod.io/?api=https://8000-shaneanthon-frameworksa-36wyeq7vfvz.ws-eu78.gitpod.io
 
+<br>
 
+References
+====
+
+https://getbootstrap.com/docs/4.0/components/card/
+https://getbootstrap.com/docs/4.1/layout/grid/
+https://www.w3schools.com/bootstrap/bootstrap_grid_examples.asp
+https://developer.mozilla.org/en-US/docs/Web/CSS/Layout_cookbook/Card
 
