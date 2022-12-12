@@ -1,7 +1,7 @@
 Server
 ======
 
-To run the server we must use the terminal to input the following commands:
+To run the server within its container we must use the terminal to input the following commands:
 
 First make sure we are in the correct directory
 ```
@@ -13,6 +13,11 @@ make build
 ```
 ```
 make run
+```
+
+To run the server outside of its Container we input:
+```
+node server
 ```
 Running the server alone prevents us from being able to interact with the client. So in order to test how the server works we must use Curl Commands.
 
@@ -39,4 +44,12 @@ make test_server
  ```
 make test_example_client_with_your_server
  ```
+
+ To View the working app
+=====
+
+When the Client and Server are both running use this link to view the finished product:
+
+https://8001-shaneanthon-frameworksa-36wyeq7vfvz.ws-eu78.gitpod.io/?api=https://8000-shaneanthon-frameworksa-36wyeq7vfvz.ws-eu78.gitpod.io
+
  

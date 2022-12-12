@@ -30,6 +30,16 @@ Alternatively testing the client can be done with -
 ```
 make test_client
 ```
-Once these have been run, reports & screenshots shall be available to view in the 'Test_Client' directory.
+Once these have been run, reports & screenshots shall be available to view in the 'Test_Client' directory.  
+<br>
+
+
+To View the working app
+=====
+
+When the Client and Server are both running use this link to view the finished product:
+
+https://8001-shaneanthon-frameworksa-36wyeq7vfvz.ws-eu78.gitpod.io/?api=https://8000-shaneanthon-frameworksa-36wyeq7vfvz.ws-eu78.gitpod.io
+
 
 

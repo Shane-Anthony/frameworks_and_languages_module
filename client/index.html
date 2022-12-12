@@ -12,6 +12,8 @@
         <style>
         body {
             background-color: B0B0AF;
+            max-width: 100%;
+            overflow-x: hidden;
         }
         .panel {
             position: absolute;
@@ -22,7 +24,8 @@
             bottom: 0px;
             padding: auto;
             
-            background: #434444;   
+            background: #434444;  
+            color: #FFF; 
         }
         .titlebar {
             margin:auto;
@@ -57,7 +60,7 @@
             position: absolute;
             padding: 5%;
             top: 20vh;
-            width: 50vw;
+            width: 50%;
             left:0em;
             right: 50vw;
 
@@ -69,14 +72,15 @@
             font-size: 1em;
             line-height: 48px;
 
-            color: #FFFFFF;
+            
         }
+        
         .right-bar {
             display: block;
             position: absolute;
             padding: 5%;
-            top: 20vh;
-            width: 50vw;
+            top: 5vh;
+            width: 50%;
             left: 50vw;
             right:100vw;
         }
@@ -87,6 +91,12 @@
         .btn_color:hover{
             background-color:#7e361e;color: #FFF;
         }
+        .card-text {
+            color: rgb(0, 0, 0);
+        }
+        .card-title {
+            color: rgb(0, 0, 0);
+        }
         </style>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -95,8 +105,8 @@
     <body>
 
     
-    <div class="panel">
-        <div class="titlebar">
+    <div class="panel"> <!--using styled panel-->
+        <div class="titlebar"> <!--Create the titlebar inside panel-->
             <div class="title">
                 <h1>FreeCycle</h1>
             </div>
@@ -105,38 +115,39 @@
                 <div class="left-bar">
                     <div class="text">
                         <p>Please Enter Details:  </p>
+                        <!--Creating the form-->
                         <form @submit.prevent="create_item" data-field="user_id" class="row g-3"><!-- https://getbootstrap.com/docs/5.0/forms/layout/ --> 
-                            <div class="col">
+                            <div class="row">
                                 <div class="col-md-4">
                                     <label for="UserID" class="input-labels">User ID: </label>
                                     <input v-model="item.user_id" id= "UserID" name="user_id" type="text" placeholder="Enter User ID">
                                 </div>
                             </div>
-                            <div class="col">
+                            <div class="row">
                                 <div class="col-md-4">
                                     <label for="Description" class="input-labels">Description: </label>
                                     <input v-model="item.description" id="Description" name="description" type="text" placeholder="Enter Description">
                                 </div>
                             </div>
-                            <div class="col">
+                            <div class="row">
                                 <div class="col-md-4">
                                     <label for="Image" class="input-labels">Image: </label>
                                     <input v-model="item.image" id="Image" name="image" type="url" placeholder="Enter Image URL">
                                 </div>
                             </div>
-                            <div class="col">
+                            <div class="row">
                                 <div class="col-md-4">
                                     <label for="Lat" class="input-labels">Latitude: </label>
                                     <input v-model="item.lat" id="Lat" name="lat" type="text" placeholder="Enter Latitude">
                                 </div>
                             </div>
-                            <div class="col">
+                            <div class="row">
                                 <div class="col-md-4">
                                     <label for="Lon" class="input-labels">Longitude: </label>
                                     <input v-model="item.lon" id="Lon" name="lon" type="text" placeholder="Enter Longitude">
                                 </div>
                             </div>
-                            <div class="col">
+                            <div class="row">
                                 <div class="col-md-4">
                                     <label for="Keywords" class="input-labels">Keywords: </label>
                                     <input v-model="item.keywords" id="Keywords" name="keywords" type="text" placeholder="Enter Keywords">
@@ -154,20 +165,18 @@
                 
                 <div class="right-bar">
                     <div class="text">
-                        <p>Test</p>
                         <ul list-style-type="none">
                             <li v-for="item in items">
-                                <div class="col">
-                                    <div class="card" > <!---https://getbootstrap.com/docs/4.0/components/card/-->
+                                <div class="row">
+                                    <div class="card border-light mb-9"> <!---https://getbootstrap.com/docs/4.0/components/card/-->
                                         <img :src="item.image" class="card-img-top" alt="card image cap"/>
-                                        <p class="card-text">Image URL: {{item.image}}</p>
                                         <div class="card-body">
-                                            <h5 class="card-title">User ID:{{item.user_id}}</h5>
-                                            <h6 class="card-subtitle mb-2 text-muted">Description: {{item.description}}</h6>
-                                            <p data-field="id">ID: {{item.id}}</p>
-                                            <p class="card-text">Latitude: {{item.lat}}</p>
-                                            <p class="card-text">Longitude: {{item.lon}}</p>
-                                            <p class="card-text">Keywords: {{item.keywords}}</p>
+                                            <h5 class="card-title">User ID:  {{item.user_id}}</h5>
+                                            <h6 class="card-subtitle mb-2 text-muted">Description:  {{item.description}}</h6>
+                                            <p class="card-text" data-field="id">ID:  {{item.id}}</p>
+                                            <p class="card-text">Latitude:  {{item.lat}}</p>
+                                            <p class="card-text">Longitude:  {{item.lon}}</p>
+                                            <p class="card-text">Keywords:  {{item.keywords}}</p>
                                             <button @click="delete_item(item.id)" data-action="delete" class="btn_color">Delete</button>
                                         </div>
                                     </div>
@@ -188,7 +197,7 @@
             const DEFAULT_API = '/api/v1';
             const urlParams = new URLSearchParams(window.location.search);
             const urlAPI = (urlParams.get('api') || '/api/v1').replace(/\/$/, '');
-            //const url = "http://localhost:8000" //https://8000-shaneanthon-frameworksa-uvvm0550rks.ws-eu78.gitpod.io/'
+            const url = 'https://8000-shaneanthon-frameworksa-uvvm0550rks.ws-eu78.gitpod.io/'
 
             createApp({
                 data() {
@@ -212,14 +221,14 @@
 
                 },
 
-                created() {
+                created() { // When submit clear form and retrieve items.
                     this.clear_item()
                     this.get_items()
                 },
 
                 methods: {
 
-                clear_item() {
+                clear_item() { //clear form
                     this.item = {...this.item, ...{
                         
                         user_id: '',
@@ -231,7 +240,8 @@
                     }}
                 },
 
-                create_item() {
+                create_item() { //Add new item to items using 'POST'
+                
                     fetch(`${urlAPI}/item`, {
 
                         method: 'POST',
@@ -246,7 +256,7 @@
 
                 },
 
-                get_items() {
+                get_items() {  // Retrieve items using 'GET'
                     fetch(`${urlAPI}/items`, {
                         method: 'GET',
                     })
@@ -256,12 +266,12 @@
 
                 },
 
-                delete_item(id){
+                delete_item(id){ // Delete items using 'DELETE'
                     fetch(`${urlAPI}/item/${id}`,{
                         method: 'DELETE',
                     })
 
-                    //.then (json => console.log('delete_item()', json))
+                    .then (json => console.log('delete_item()', json))
                     .then (this.get_items)
                     .catch(err=>console.error(err));
                 }},
