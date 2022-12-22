@@ -51,12 +51,29 @@ https://reflectoring.io/express-middleware/
 
 
 
-### (name of Feature 3)
+### Templates
 
-(Technical description of the feature - 40ish words - 1 mark)
-(A code block snippet example demonstrating the feature - 1 mark)
-(Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
-(Provide reference urls to your sources of information about the feature - required)
+Template engines allow us to use static files within our applications. When run the engine replaces variables with the proper values and turns the template into a working HTML file ready to be sent to the client. Some of the popular template engines to be used with express are Mustache, Pug, and EJS.  Below is an example of a Pug in use. 
+```js
+app.set('view engine', 'pug')
+app.get('/', (req, res) => {
+  res.render('index', { title: 'Hey', message: 'Hello there!' })
+})
+
+```
+Once the engine has been set as above, a call can be made to render the HTML. Then a template file eg. ‘index.pug’ needs to include the following type of content.
+```
+html
+  head
+    title= title
+  body
+    h1= message
+```
+Template engines allow us to create HTML pages quickly and is much less complex than manually designing them.   
+
+https://expressjs.com/en/guide/using-template-engines.html  
+https://www.javatpoint.com/expressjs-template  
+https://www.geeksforgeeks.org/how-to-do-templating-using-expressjs-in-node-js/  
 
 
 Server Language Features
