@@ -30,7 +30,7 @@ https://expressjs.com/en/guide/routing.html
 https://kinsta.com/knowledgebase/what-is-express-js/
 
 
-### Middleware
+### **Middleware**
 
 Middleware within Express.js are functions that are called to handle the request after being sent to the server and before the response is sent to the client.  Middleware is typically bound to a route handler, i.e. ```app.get()```. It is then executed when the request receives an HTTP request.
 ```js
@@ -51,7 +51,7 @@ https://reflectoring.io/express-middleware/
 
 
 
-### Templates
+### **Templates**
 
 Template engines allow us to use static files within our applications. When run the engine replaces variables with the proper values and turns the template into a working HTML file ready to be sent to the client. Some of the popular template engines to be used with express are Mustache, Pug, and EJS.  Below is an example of a Pug in use. 
 ```js
