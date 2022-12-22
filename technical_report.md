@@ -79,20 +79,35 @@ https://www.geeksforgeeks.org/how-to-do-templating-using-expressjs-in-node-js/
 Server Language Features
 -----------------------
 
-### (name of Feature 1)
+### **Arrow Functions**
 
-(Technical description of the feature - 40ish words - 1 mark)
-(A code block snippet example demonstrating the feature - 1 mark)
-(Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
-(Provide reference urls to your sources of information about the feature - required)
+Arrow functions are a lightweight alternative to traditional anonymous function expressions, allowing us to create functions in a much tidier format.
+```js
+app.post('/item', (req, res) => {}
+```
+This looks much better than regular function expressions:
+```js
+app.get('/item', function(req, res){}
+```
+Arrow functions are suitable for simple tasks, and make code look a lot cleaner and condensed.
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions  
+https://www.w3schools.com/js/js_arrow_function.asp
 
 
-### (name of Feature 2)
+### **Const**
 
-(Technical description of the feature - 40ish words - 1 mark)
-(A code block snippet example demonstrating the feature - 1 mark)
-(Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
-(Provide reference urls to your sources of information about the feature - required)
+Both ‘Const’ and ‘Let’ are highly regarded within JavaScript. Both have overtaken ‘Var’ the once favoured statement. Variables declared using ‘Const’ stay the same within their scope, also known as block scoped. They cannot be re-declared or reassigned.
+```js
+const express = require('express')
+const app = express()
+const port = 8000
+const cors = require('cors')
+```
+The benefit of this is that variables cannot be accidentally overwritten. Handy when declaring objects such as in the above snippet.
+
+
+https://www.freecodecamp.org/news/var-let-and-const-whats-the-difference/
 
 
 Client Framework Features
