@@ -115,11 +115,11 @@ Client Framework Features
 
 ### **Data Binding**
 
-(Technical description of the feature - 40ish words - 1 mark)
+One-way data binding means that the variable is solely bound to the DOM, two-way means that it is bound both too and from the DOM. Vue provides two-way data binding in a lot less lines of code than alternative frameworks. The ```v-model``` directive provides this link.
 ```html
 <input v-model="item.user_id" id= "UserID" name="user_id" type="text" placeholder="Enter User ID">
 ```
-(Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
+Using the ```v-model``` directive here automatically binds the input within the textbox to the ```user_id``` variable. This removes the issue of needing to manually use an event handler to listen for changes within the textbox.
 
 https://vuejs.org/guide/essentials/forms.html  
 https://www.javatpoint.com/vue-js-data-binding
