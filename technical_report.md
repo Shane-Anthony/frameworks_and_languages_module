@@ -113,28 +113,70 @@ https://www.freecodecamp.org/news/var-let-and-const-whats-the-difference/
 Client Framework Features
 -------------------------
 
-### (name of Feature 1)
+### **Data Binding**
 
 (Technical description of the feature - 40ish words - 1 mark)
-(A code block snippet example demonstrating the feature - 1 mark)
+```html
+<input v-model="item.user_id" id= "UserID" name="user_id" type="text" placeholder="Enter User ID">
+```
 (Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
-(Provide reference urls to your sources of information about the feature - required)
+
+https://vuejs.org/guide/essentials/forms.html  
+https://www.javatpoint.com/vue-js-data-binding
+
+### **Event Handling**
+
+To build a dynamic website, listening for different events is crucial, this is called event handling. This can be done two ways using Vue’s native directive ```v-on```  or ```@``` for short, to listen for DOM events; Inline Handlers, or  Method Handlers.
+```js
+<button @click="delete_item(item.id)" data-action="delete" class="btn_color">Delete</button>
+```
+The inline handler seen above is good for simple cases.
+```js
+delete_item(id){ // Delete items using 'DELETE'
+  fetch(`${urlAPI}/item/${id}`,{
+    method: 'DELETE',
+  })
+
+  .then (json => console.log('delete_item()', json))
+  .then (this.get_items)
+  .catch(err=>console.error(err));
+}
+```
+```html
+<button @click="delete_item(item.id)" data-action="delete" class="btn_color">Delete</button>
+```
+Method handlers point to a defined method when called. 
+
+https://vuejs.org/guide/essentials/event-handling.html  
+https://v1.vuejs.org/guide/events.html
 
 
-### (name of Feature 2)
+### **Interpolation**
 
-(Technical description of the feature - 40ish words - 1 mark)
-(A code block snippet example demonstrating the feature - 1 mark)
-(Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
-(Provide reference urls to your sources of information about the feature - required)
+Interpolation is the process of inserting something of a different type into something else. Vue uses Interpolation to insert Text, Raw HTML, Attributes or JavaScript Expressions into HTML code. The most used method of this is the ‘Mustache’ syntax ```{{ }}```.
+```html
+<li v-for="item in items">
+  <div class="row">
+    <div class="card border-light mb-9"> <!---https://getbootstrap.com/docs/4.0/components/card/-->
+      <img :src="item.image" class="card-img-top" alt="card image cap"/>
+      <div class="card-body">
+        <h5 class="card-title">User ID:  {{item.user_id}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Description:  {{item.description}}</h6>
+        <p class="card-text" data-field="id">ID:  {{item.id}}</p>
+        <p class="card-text">Latitude:  {{item.lat}}</p>
+        <p class="card-text">Longitude:  {{item.lon}}</p>
+        <p class="card-text">Keywords:  {{item.keywords}}</p>
+        <button @click="delete_item(item.id)" data-action="delete" class="btn_color">Delete</button>
+      </div>
+    </div>
+  </div>
+</li>
+```
+Above we can identify that using Interpolation in this way has synchronized the variables within 'item' and 'items'.  
 
-
-### (name of Feature 3)
-
-(Technical description of the feature - 40ish words - 1 mark)
-(A code block snippet example demonstrating the feature - 1 mark)
-(Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
-(Provide reference urls to your sources of information about the feature - required)
+https://dev.to/eligarlo/vuejs-interpolations-f3  
+https://vuejs.org/guide/essentials/template-syntax.html  
+https://v1.vuejs.org/guide/syntax.html
 
 
 Client Language Features
