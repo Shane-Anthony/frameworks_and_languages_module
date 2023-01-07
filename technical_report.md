@@ -241,31 +241,47 @@ https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Introduci
 Critique of Server/Client prototype
 ---------------------
 
-### Rendering - Client
+### Response Codes
 
-```javascript
-function render_items(params) {
-		fetch(`${urlAPI}/items?${new URLSearchParams(params).toString()}`)
-			.then(response => response.json())
-			.then(renderItems)
-		.catch(err => console.error(err));
-	}
-```
-
-(Explain why this pattern is problematic - 40ish words 1 mark)
-
-### CORS 
-
-```python
-RESPONSE_DEFAULTS = {
-    'code': 200, 
-    'body': '',
-    'Content-type': 'text/html; charset=utf-8',
-    'Server': 'CustomHTTP/0.0 Python/3.9.0+',
-    'Access-Control-Allow-Origin': '*',
+```py
+RESPONSE_CODES = {
+    200: 'OK',
+    201: 'Created',
+    204: 'No Content',
+    301: 'Moved Permanently',
+    304: 'Not Modified',
+    400: 'Bad Request',
+    401: 'Unauthorized',
+    403: 'Forbidden',
+    404: 'Not Found',
+    405: 'Method Not Allowed',
+    500: 'Internal Server Error',
+    501: 'Not Implemented',
 }
 ```
-(Explain why this pattern is problematic - 40ish words 1 mark)
+
+This list of response codes is only 12 out of the 16 status codes that are recommended in the RFC1945 (the HTTP 1.0 specification). This could be detrimental to the servers performance if it receives a HTTP response code it is not familiar with. 
+Some more codes that could be utilized are:  
+*	100 Continue  
+*	206 Partial Content  
+*	408 Request Timeout  
+*	502 Bad Gateway  
+*	599 Network connect timeout error 
+
+
+
+
+### While True 
+
+```python
+while True:
+  s.listen()
+  try:
+    conn, addr = s.accept()
+  except KeyboardInterrupt as ex:
+    break
+```
+Using ```while True:``` creates an infinite loop, that will continue running until the user forcefully stops the process. Forcefully stopping (killing) programs this way can cause issues with data.
 
 
 Future Technology Suggestions
