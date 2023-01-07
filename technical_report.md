@@ -72,7 +72,9 @@ html
 Template engines allow us to create HTML pages quickly and is much less complex than manually designing them.   
 
 https://expressjs.com/en/guide/using-template-engines.html  
+
 https://www.javatpoint.com/expressjs-template  
+
 https://www.geeksforgeeks.org/how-to-do-templating-using-expressjs-in-node-js/  
 
 
@@ -92,6 +94,7 @@ app.get('/item', function(req, res){}
 Arrow functions are suitable for simple tasks, and make code look a lot cleaner and condensed.
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions  
+
 https://www.w3schools.com/js/js_arrow_function.asp
 
 
@@ -122,6 +125,7 @@ One-way data binding means that the variable is solely bound to the DOM, two-way
 Using the ```v-model``` directive here automatically binds the input within the textbox to the ```user_id``` variable. This removes the issue of needing to manually use an event handler to listen for changes within the textbox.
 
 https://vuejs.org/guide/essentials/forms.html  
+
 https://www.javatpoint.com/vue-js-data-binding
 
 ### **Event Handling**
@@ -148,6 +152,7 @@ delete_item(id){ // Delete items using 'DELETE'
 Method handlers point to a defined method when called. 
 
 https://vuejs.org/guide/essentials/event-handling.html  
+
 https://v1.vuejs.org/guide/events.html
 
 
@@ -182,19 +187,55 @@ https://v1.vuejs.org/guide/syntax.html
 Client Language Features
 ------------------------
 
-### (name of Feature 1)
+### **This**
 
-(Technical description of the feature - 40ish words - 1 mark)
-(A code block snippet example demonstrating the feature - 1 mark)
-(Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
-(Provide reference urls to your sources of information about the feature - required)
+When called the value of ```this``` keyword is dependent on how it appears, whether that be in a function, class or global. In an object method it is referring to the object, when alone it is referring to the global object and in a function it also refers to the global object.
 
-### (name of Feature 2)
+```js
+clear_item() { //clear form
+  this.item = {...this.item, ...{
+                        
+    user_id: '',
+    keywords: '',
+    description: '',
+    image: '',
+    lat: '',
+    lon: '',
+  }}
+}
+```
+Using ```this``` enables features to be shared across objects. Being so dynamic is important if using a feature called prototypical inheritance, enabling classes and constructor functions to work as intended. 
 
-(Technical description of the feature - 40ish words - 1 mark)
-(A code block snippet example demonstrating the feature - 1 mark)
-(Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
-(Provide reference urls to your sources of information about the feature - required)
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this#description  
+
+https://www.w3schools.com/js/js_this.asp  
+
+https://dev.to/reedbarger/why-we-need-this-in-javascript-and-how-to-know-it-s-value-1595
+
+### **Asynchronous Processing**
+
+The ability to begin a long running task while still be responsive to other calls and events without waiting for the current task to finish, is the technique called asynchronous processing. The ```then``` keyword can be used to schedule callback functions. It returns a new ```promise``` object.
+
+```js
+create_item() { //Add new item to items using 'POST'               
+  fetch(`${urlAPI}/item`, {
+
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(this.item),
+  })
+  .then(response => response.json())
+  .then(json => console.log('create_item()', json))
+  .then(this.clear_item)
+  .then(this.get_items)
+  .catch(err => console.error(err));
+},
+```
+
+This technique is a much better alternative in most applications to synchronous processing.  
+https://www.freecodecamp.org/news/asynchronous-javascript-explained/  
+
+https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Introducing
 
 
 Critique of Server/Client prototype
