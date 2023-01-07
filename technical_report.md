@@ -1,7 +1,7 @@
 Technical Report
 ================
 
-(intro)
+This report contains technical descriptions and justifications for the chosen languages and frameworks that have been used in the development of the FreeCycle App. It documents the current choices of tools and their features and critiques past implementations. This documentation also provides suggestions for future development.
 
 
 Server Framework Features
@@ -287,14 +287,14 @@ Using ```while True:``` creates an infinite loop, that will continue running unt
 Future Technology Suggestions
 -----------------------------
 
-### (name of technology/feature 1)
+### **NoSQL**
 
 (Description of a feature or tool - 40ish words - 1 mark)
 (Why/benefits/problems with using this - 40ish words - 1 mark)
 (Provide reference urls to your source of information about this technology - required)
 
 
-### (name of technology/feature 2)
+### **Serverless Architecture**
 
 (Description of a feature or tool - 40ish words - 1 mark)
 (Why/benefits/problems with using this - 40ish words - 1 mark)
