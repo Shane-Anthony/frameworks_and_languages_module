@@ -260,7 +260,7 @@ RESPONSE_CODES = {
 }
 ```
 
-This list of response codes is only 12 out of the 16 status codes that are recommended in the RFC1945 (the HTTP 1.0 specification). This could be detrimental to the servers performance if it receives a HTTP response code it is not familiar with. 
+This list of response codes is only 12 out of the 16 status codes that are recommended in the [RFC1945 (the HTTP 1.0 specification)](https://www.rfc-editor.org/rfc/rfc1945#section-9). This could be detrimental to the servers performance if it receives a HTTP response code it is not familiar with. 
 Some more codes that could be utilized are:  
 *	100 Continue  
 *	206 Partial Content  
