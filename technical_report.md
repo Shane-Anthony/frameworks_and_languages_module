@@ -289,20 +289,27 @@ Future Technology Suggestions
 
 ### **NoSQL**
 
-(Description of a feature or tool - 40ish words - 1 mark)
-(Why/benefits/problems with using this - 40ish words - 1 mark)
-(Provide reference urls to your source of information about this technology - required)
+NoSQL refers to a non-relational database that offers storage and data retrieval. Schemas for NoSQL databases are flexible, meaning data can be stored in a free-form manner. Also a benefit for using NoSQL is horizontal scaling so it is capable of handling large amounts of data efficiently as possible. However NoSQL does have it faults, due to the focus being on storage, it offers very little functionality elsewhere. It also lacks standardization across the different ‘brands’ of NoSQL, with each type (MongoDB, Elasticsearch etc.) having their own strengths and downfalls, making choosing the correct system more important.
+
+https://www.geeksforgeeks.org/introduction-to-nosql/  
+
+https://www.dataversity.net/nosql-databases-advantages-and-disadvantages/  
+
 
 
 ### **Serverless Architecture**
 
-(Description of a feature or tool - 40ish words - 1 mark)
-(Why/benefits/problems with using this - 40ish words - 1 mark)
-(Provide reference urls to your source of information about this technology - required)
+Serverless Architecture refers to the use of cloud-based technology over using server software and managing hardware. Aside from no longer needing to manage infrastructure, this also entails endless scalability as services are usually charged on a ‘pay as you go’ plan and lower latency as the server could be hosted at a location closest to the end-user. Drawbacks to this service, unfortunately do include security and privacy concerns, as you are entrusting your data to be protected from harm both physical and virtually by another company. Lastly, many cloud vendors trap their clients into long-term contracts that are increasingly difficult to get out of. 
+
+https://www.cloudflare.com/en-gb/learning/serverless/why-use-serverless/  
+
+https://www.okta.com/uk/identity-101/serverless-computing/
 
 
-### (name of technology/feature 3)
+### **Single Page Applications**
 
-(Description of a feature or tool - 40ish words - 1 mark)
-(Why/benefits/problems with using this - 40ish words - 1 mark)
-(Provide reference urls to your source of information about this technology - required)
+Single page applications refer to websites or web applications that rewrites itself with new data dynamically, as opposed to loading a new page each time. Without the constant need for reloading pages and the lag that accompanies it, it creates a much more seamless and engaging user experience. Disadvantages of this however, SPAs use up a larger quantity of browser resources as the web browser is performing most of the tasks. Also security issues as SPAs are reportedly much more prone to scripting attacks and more likely to leak sensitive data. 
+
+https://www.bloomreach.com/en/blog/2018/what-is-a-single-page-application  
+
+https://www.netsolutions.com/insights/single-page-application/
